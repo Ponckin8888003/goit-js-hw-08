@@ -76,17 +76,17 @@ gallery.addEventListener("click", function (event) {
     )
     .show();
 });
-
+let markupArray = [];
 for (let { preview, original, description } of images) {
-  let markup = `<li class="gallery-item">
-  <a class = "gallery-link" href = ${original}>
+  markupArray.unshift(`<li class="gallery-item">
+  <a class = "gallery-link" href = "${original}">
     <img
       class = "gallery-image"
-      src = ${preview}
-      data-source = ${original}
-      alt = ${description}
+      src = "${preview}"
+      data-source = "${original}"
+      alt = "${description}"
     />
    </a>
-</li>`;
-  gallery.insertAdjacentHTML("afterbegin", markup);
+</li>`);
 }
+gallery.insertAdjacentHTML("afterbegin", markupArray.join(""));
