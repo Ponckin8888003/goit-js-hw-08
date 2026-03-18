@@ -67,14 +67,17 @@ const images = [
 let gallery = document.querySelector(".gallery");
 gallery.addEventListener("click", function (event) {
   event.preventDefault();
-
-  basicLightbox
-    .create(
-      `
+  if (event.target.nodeName === "IMG") {
+    basicLightbox
+      .create(
+        `
 		<img width="1400" height="900" src="${event.target.dataset.source}">
 	`,
-    )
-    .show();
+      )
+      .show();
+  } else {
+    console.log("it's not image");
+  }
 });
 let markupArray = [];
 for (let { preview, original, description } of images) {
